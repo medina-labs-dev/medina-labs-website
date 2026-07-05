@@ -6,6 +6,7 @@
 <title>Medina Labs — Software Consulting & Product Development</title>
 <meta name="description" content="Medina Labs -- Software consulting and product development based in Berlin, Germany">
 <meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236ea8fe'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='30' fill='%230a0a0d' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Medina Labs — Software Consulting & Product Development">
@@ -16,6 +17,24 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Medina Labs — Software Consulting & Product Development">
 <meta name="twitter:description" content="Medina Labs -- Software consulting and product development based in Berlin, Germany">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Medina Labs",
+  "legalName": "Max Francisco Medina Estrella",
+  "alternateName": "Medina Labs",
+  "url": "https://medina-labs.com",
+  "email": "max@medina-labs.com",
+  "description": "Medina Labs is a software consultancy based in Berlin, Germany, offering software development, API integration, and AI-powered product development.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Berlin",
+    "addressCountry": "DE"
+  }
+}
+</script>
 
 <style>
   :root {
@@ -33,25 +52,83 @@
   html { scroll-behavior: smooth; }
 
   body {
+    position: relative;
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    left: 50%;
+    width: 900px;
+    height: 480px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(110, 168, 254, 0.14), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   .wrap {
+    position: relative;
+    z-index: 1;
     max-width: 760px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(10, 10, 13, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .nav-brand:hover { text-decoration: none; }
+
+  .nav-links {
+    display: flex;
+    gap: 22px;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
   header.hero {
-    padding: 96px 0 64px;
+    padding: 72px 0 56px;
     border-bottom: 1px solid var(--border);
     opacity: 0;
     transform: translateY(12px);
@@ -60,13 +137,6 @@
 
   @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
   }
 
   .brand-mark {
@@ -83,10 +153,11 @@
     flex-shrink: 0;
   }
 
-  .brand-name {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+  .brand-mark.small {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    font-size: 12px;
   }
 
   h1 {
@@ -106,12 +177,35 @@
     font-size: 16px;
     color: var(--text-muted);
     max-width: 560px;
-    margin: 0;
+    margin: 0 0 32px;
   }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: linear-gradient(135deg, #6ea8fe, #a56efe);
+    color: #0a0a0d;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px -8px rgba(110, 168, 254, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px -6px rgba(110, 168, 254, 0.55);
+    text-decoration: none;
+  }
+
+  .btn:active { transform: translateY(0); }
 
   section {
     padding: 56px 0;
     border-bottom: 1px solid var(--border);
+    scroll-margin-top: 72px;
   }
 
   section:last-of-type { border-bottom: none; }
@@ -173,12 +267,10 @@
   }
 
   .contact-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    font-style: normal;
   }
 
   .contact-item {
@@ -201,21 +293,40 @@
     font-size: 13px;
   }
 
+  footer p { margin: 0 0 6px; }
+  footer p:last-child { margin-bottom: 0; }
+
+  .legal-line { font-size: 12px; opacity: 0.8; }
+
   @media (max-width: 640px) {
-    header.hero { padding: 64px 0 44px; }
+    header.hero { padding: 48px 0 40px; }
     section { padding: 40px 0; }
     .services { grid-template-columns: 1fr; }
+    .nav-links { gap: 16px; }
+  }
+
+  @media (max-width: 420px) {
+    .nav-brand span:last-child { display: none; }
   }
 </style>
 </head>
 <body>
 
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="nav-brand" aria-label="Medina Labs home">
+      <span class="brand-mark small">ML</span>
+      <span>Medina Labs</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
   <header class="hero">
-    <div class="brand">
-      <div class="brand-mark">ML</div>
-      <div class="brand-name">Medina Labs</div>
-    </div>
     <h1>Software Consulting &amp; Product Development</h1>
     <p class="tagline">We design, build, and ship software for teams that need it done right.</p>
     <p class="description">
@@ -223,9 +334,10 @@
       businesses to design, build, and ship custom software — from backend systems and
       integrations to AI-powered products.
     </p>
+    <a class="btn" href="mailto:max@medina-labs.com">Get in Touch <span aria-hidden="true">→</span></a>
   </header>
 
-  <section aria-labelledby="services-heading">
+  <section id="services" aria-labelledby="services-heading">
     <h2 id="services-heading">Services</h2>
     <ul class="services">
       <li class="service">
@@ -246,22 +358,23 @@
     </ul>
   </section>
 
-  <section aria-labelledby="contact-heading">
+  <section id="contact" aria-labelledby="contact-heading">
     <h2 id="contact-heading">Contact</h2>
-    <ul class="contact-list">
-      <li class="contact-item">
+    <address class="contact-list">
+      <div class="contact-item">
         <span class="contact-icon">✉</span>
         <a href="mailto:max@medina-labs.com">max@medina-labs.com</a>
-      </li>
-      <li class="contact-item">
+      </div>
+      <div class="contact-item">
         <span class="contact-icon">📍</span>
         <span>Berlin, Germany</span>
-      </li>
-    </ul>
+      </div>
+    </address>
   </section>
 
   <footer>
-    © 2026 Medina Labs. All rights reserved.
+    <p>© 2026 Medina Labs. All rights reserved.</p>
+    <p class="legal-line">Medina Labs is the trading name of Max Francisco Medina Estrella.</p>
   </footer>
 </div>
 
