@@ -298,11 +298,148 @@
 
   .legal-line { font-size: 12px; opacity: 0.8; }
 
+  /* Success Stories */
+  .stories {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .story {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.5s ease forwards;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .story:nth-child(1) { animation-delay: 0.1s; }
+  .story:nth-child(2) { animation-delay: 0.2s; }
+  .story:nth-child(3) { animation-delay: 0.3s; }
+
+  .story:hover {
+    border-color: #34343f;
+    transform: translateY(-2px);
+  }
+
+  .story.featured {
+    border-color: rgba(110, 168, 254, 0.35);
+    box-shadow: 0 0 0 1px rgba(110, 168, 254, 0.12), 0 12px 40px -20px rgba(110, 168, 254, 0.4);
+  }
+
+  .story.featured:hover {
+    border-color: rgba(110, 168, 254, 0.55);
+  }
+
+  .story-note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .story-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .story h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
+  .tag.live {
+    color: #7ee2a8;
+    border-color: rgba(126, 226, 168, 0.35);
+  }
+
+  .story p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 620px;
+  }
+
+  .story-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .story-link span { transition: margin-left 0.2s ease; }
+  .story-link:hover span { margin-left: 4px; }
+
+  /* Featured story with before/after */
+  .story.featured .compare {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 18px 0;
+  }
+
+  .compare figure {
+    margin: 0;
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .compare img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .compare figcaption {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    background: rgba(10, 10, 13, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
   @media (max-width: 640px) {
     header.hero { padding: 48px 0 40px; }
     section { padding: 40px 0; }
     .services { grid-template-columns: 1fr; }
     .nav-links { gap: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    header.hero, .service, .story {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   @media (max-width: 420px) {
@@ -320,6 +457,7 @@
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
+      <a href="#work">Work</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -356,6 +494,67 @@
         <p>Practical AI features that add real value to your product.</p>
       </li>
     </ul>
+  </section>
+
+  <section id="work" aria-labelledby="work-heading">
+    <h2 id="work-heading">Work</h2>
+    <div class="stories">
+
+      <article class="story featured">
+        <div class="story-head">
+          <h3>Tropical Sea Divers</h3>
+          <span class="tag live">Live</span>
+        </div>
+        <p>
+          Rebuilt a 20-year-old dive-school website into a fast, modern, multilingual site
+          (French, English, Spanish, German, Italian) for Tropical Sea Divers in Boca Chica,
+          Dominican Republic. Optimized for SEO with static prerendering so search engines and
+          social platforms read every page, helping the school reach divers in their own language.
+        </p>
+        <div class="compare">
+          <figure>
+            <figcaption>Before</figcaption>
+            <img src="assets/tropical-before.webp" alt="Tropical Sea Divers website before the redesign" loading="lazy" width="1280" height="900">
+          </figure>
+          <figure>
+            <figcaption>After</figcaption>
+            <img src="assets/tropical-after.webp" alt="Tropical Sea Divers website after the redesign" loading="lazy" width="1280" height="900">
+          </figure>
+        </div>
+        <a class="story-link" href="https://www.tropicalseadivers.com" target="_blank" rel="noopener">
+          Visit the site <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <article class="story">
+        <div class="story-head">
+          <h3>AI WhatsApp Assistant</h3>
+          <span class="tag live">Live</span>
+        </div>
+        <p>
+          Solopreneurs across Latin America run their whole business through WhatsApp, where
+          important messages get buried under everyday chatter. We built an AI assistant that
+          quietly reads incoming messages and delivers a smart daily digest, sorted by urgent,
+          pending, and informational, so nothing slips through. Live in production with its
+          first client.
+        </p>
+        <p class="story-note">Runs entirely inside WhatsApp · no public page</p>
+      </article>
+
+      <article class="story">
+        <div class="story-head">
+          <h3>Folio</h3>
+          <span class="tag">Coming soon</span>
+        </div>
+        <p>
+          An offline PDF reader with an on-device AI assistant. Read and ask questions about any
+          document, fully offline, so your files never leave your phone. Built for privacy, with no
+          accounts and no tracking.
+        </p>
+        <p class="story-note">Coming to Google Play</p>
+      </article>
+
+    </div>
   </section>
 
   <section id="contact" aria-labelledby="contact-heading">
